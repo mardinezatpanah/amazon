@@ -8,6 +8,15 @@ import newArrOne from "./images/products/newArrival/newArrOne.webp";
 import newArrTwo from "./images/products/newArrival/newArrTwo.webp";
 import newArrThree from "./images/products/newArrival/newArrThree.webp";
 import newArrFour from "./images/products/newArrival/newArrFour.webp";
+import bestSellerOne from "./images/products/bestSeller/bestSellerOne.webp";
+import bestSellerTwo from "./images/products/bestSeller/bestSellerTwo.webp";
+import bestSellerThree from "./images/products/bestSeller/bestSellerThree.webp";
+import bestSellerFour from "./images/products/bestSeller/bestSellerFour.webp";
+import spfOne from "./images/products/specialOffer/spfOne.webp";
+import spfTwo from "./images/products/specialOffer/spfTwo.webp";
+import spfThree from "./images/products/specialOffer/spfThree.webp";
+import spfFour from "./images/products/specialOffer/spfFour.webp";
+import productOfTheYear from "./images/products/productOfTheYear.webp";
 
 export {
   bannerImgOne,
@@ -19,5 +28,14 @@ export {
   newArrOne,
   newArrTwo,
   newArrThree,
-  newArrFour
+  newArrFour,
+  bestSellerOne,
+  bestSellerTwo,
+  bestSellerThree,
+  bestSellerFour,
+  spfOne,
+  spfTwo,
+  spfThree,
+  spfFour,
+  productOfTheYear
 };
