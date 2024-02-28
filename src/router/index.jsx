@@ -5,6 +5,8 @@ import Shop from "../pages/Shop/Shop";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import Journal from "../pages/Journal/Journal";
+import SignUp from "../pages/Account/SignUp";
+import SignIn from "../pages/Account/SignIn";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +18,8 @@ export const router = createBrowserRouter(
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/journal" element={<Journal />}></Route>
         </Route>
+        <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/signin" element={<SignIn />}></Route>
       </Route>
     )
   );
