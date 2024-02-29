@@ -1,22 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../redux/slices/authSlice";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errEmail, setErrEmail] = useState("");
-  const [errPassword, setErrPassword] = useState("");
+  const dispatch = useDispatch();
+  const intitalState = {
+    email: "",
+    password: "",
+    errEmail: "",
+    errPassword: "",
+  };
+  const [values, setValues] = useState(intitalState);
 
   const handleEmail = (e) => {
-    setEmail(e.target.value);
-    setErrEmail("");
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value, errEmail: "" });
   };
   const handlePassword = (e) => {
-    setPassword(e.target.value);
-    setErrPassword("");
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value, errPassword: "" });
   };
 
   const EmailValidation = (email) => {
@@ -28,32 +34,42 @@ const SignIn = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
 
-    if (!email) {
-      setErrEmail("Enter your email");
+    if (!values.email) {
+      setValues({ ...values, errEmail: "Enter your email" });
     } else {
-      if (!EmailValidation(email)) {
-        setErrEmail("Enter a Valid email");
+      if (!EmailValidation(values.email)) {
+        setValues({ ...values, errEmail: "Enter a Valid email" });
       }
     }
 
-    if (!password) {
-      setErrPassword("Create a password");
+    if (!values.password) {
+      setValues({ ...values, errPassword: "Create a password" });
     } else {
-      if (password.length < 6) {
-        setErrPassword("Passwords must be at least 6 characters");
+      if (values.password.length < 6) {
+        setValues({
+          ...values,
+          errPassword: "Passwords must be at least 6 characters",
+        });
       }
     }
 
-    if (email && EmailValidation(email) && password && password.length >= 6) {
-      setEmail("");
-      setPassword("");
+    if (
+      values.email &&
+      EmailValidation(values.email) &&
+      values.password &&
+      values.password.length >= 6
+    ) {
+      setValues({ ...values, email: "" });
+      setValues({ ...values, password: "" });
+      dispatch(login(values));
       navigate("/");
+      console.log(values);
     }
   };
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
-        <div className="w-[450px] h-full bg-primeColor px-10 flex flex-col gap-6 justify-center">
+        <div className="w-[450px] h-full bg-primeColor px-10 flex flex-col gap-3 justify-center">
           <Link to="/">
             <h1 className="text-xl">Amazon</h1>
           </Link>
@@ -134,15 +150,16 @@ const SignIn = () => {
                 </p>
                 <input
                   onChange={handleEmail}
-                  value={email}
+                  value={values.email}
+                  name="email"
                   className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                   type="email"
                   placeholder="john@workemail.com"
                 />
-                {errEmail && (
+                {values.errEmail && (
                   <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                     <span className="font-bold italic mr-1">!</span>
-                    {errEmail}
+                    {values.errEmail}
                   </p>
                 )}
               </div>
@@ -154,15 +171,16 @@ const SignIn = () => {
                 </p>
                 <input
                   onChange={handlePassword}
-                  value={password}
+                  value={values.password}
+                  name="password"
                   className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                   type="password"
                   placeholder="Create password"
                 />
-                {errPassword && (
+                {values.errPassword && (
                   <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                     <span className="font-bold italic mr-1">!</span>
-                    {errPassword}
+                    {values.errPassword}
                   </p>
                 )}
               </div>
