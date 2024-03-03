@@ -15,6 +15,8 @@ import Journal from "../pages/Journal/Journal";
 import SignUp from "../pages/Account/SignUp";
 import SignIn from "../pages/Account/SignIn";
 import { useSelector } from "react-redux";
+import Offer from "../pages/Offer/Offer";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 const ProtectedRoute = ({ children }) => {
   const { authUser } = useSelector((state) => state.user.user);
@@ -33,6 +35,8 @@ export const router = createBrowserRouter(
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/journal" element={<Journal />}></Route>
+        <Route path="/offer" element={<Offer />}></Route>
+        <Route path="/product/:_id" element={<ProductDetails />}></Route>
       </Route>
       <Route
         path="/signup"
