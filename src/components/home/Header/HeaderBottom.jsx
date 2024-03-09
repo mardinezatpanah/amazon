@@ -9,6 +9,7 @@ import { logout } from "../../../redux/slices/authSlice";
 const HeaderBottom = () => {
   const [showUser, setShowUser] = useState(false);
   const user = useSelector((state) => state.user.user);
+  const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
 
   const handleSignOut = () =>{
@@ -77,7 +78,7 @@ const HeaderBottom = () => {
               <div className="relative">
                 <FaShoppingCart />
                 <span className="absolute font-titleFont top-3 -right-2 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-primeColor text-white">
-                  0
+                {products.length > 0 ? products.length : 0}
                 </span>
               </div>
             </Link>

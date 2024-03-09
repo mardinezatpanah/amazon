@@ -27,7 +27,7 @@ export const authSlice = createSlice({
         password: "",
         authUser: false,
       };
-      sessionStorage.clear();
+      sessionStorage.removeItem("authUser");
     },
   },
 });

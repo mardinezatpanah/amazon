@@ -18,6 +18,7 @@ import spfThree from "./images/products/specialOffer/spfThree.webp";
 import spfFour from "./images/products/specialOffer/spfFour.webp";
 import productOfTheYear from "./images/products/productOfTheYear.webp";
 import paymentCard from "./images/payment.png";
+import emptyCart from "./emptyCart.png";
 
 export {
   bannerImgOne,
@@ -39,5 +40,6 @@ export {
   spfThree,
   spfFour,
   productOfTheYear,
-  paymentCard
+  paymentCard,
+  emptyCart
 };
