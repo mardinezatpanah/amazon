@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { motion } from "framer-motion";
@@ -9,6 +9,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const [sidenav, setSidenav] = useState(false);
   const [category, setCategory] = useState(false);
+  const location = useLocation();
   useEffect(() => {
     let ResponsiveMenu = () => {
       if (window.innerWidth < 667) {
@@ -44,6 +45,7 @@ const Header = () => {
                       key={_id}
                       className="flex font-normal hover:font-bold w-20 h-6 justify-center items-center px-12 text-base text-white hover:underline underline-offset-[4px] decoration-[1px] hover:text-white md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
                       to={link}
+                      state={{ data: location.pathname?.split("/")[1] }}
                     >
                       <li>{title}</li>
                     </NavLink>
@@ -77,6 +79,7 @@ const Header = () => {
                         >
                           <NavLink
                             to={item.link}
+                            state={{ data: location.pathname.split("/")[1] }}
                             onClick={() => setSidenav(false)}
                           >
                             {item.title}
